@@ -84,10 +84,10 @@ namespace Prometric.MathApp
 
             if (orderBy == OrderBy.Desc)
             {
-                _shapes = result.Reverse().ToList();
+                _shapes = result?.Reverse().ToList();
             }
 
-            _shapes = result.ToList();
+            _shapes = result?.ToList();
         }
 
         public abstract class Shape
@@ -126,7 +126,7 @@ namespace Prometric.MathApp
             private double Side3 { get; }
 
             public Triangle(double side1, double side2, double side3 = -1)
-                : base("Triangle")
+                : base("Scalene")
             {
                 Side1 = side1;
                 Side2 = side2;
