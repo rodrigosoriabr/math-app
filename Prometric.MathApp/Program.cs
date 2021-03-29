@@ -17,7 +17,7 @@ namespace Prometric.MathApp
             Console.WriteLine($"- Perimeter: {circle.Perimeter}");
             Console.WriteLine();
 
-            var triangle1 = new MathApp.Triangle(5, 4, 6);
+            var triangle1 = new MathApp.Triangle(5, 4);
             Console.WriteLine(triangle1.Name);
             Console.WriteLine($"- Area: {triangle1.Area}");
             Console.WriteLine($"- Perimeter: {triangle1.Perimeter}");
@@ -125,12 +125,14 @@ namespace Prometric.MathApp
             private double Side2 { get; }
             private double Side3 { get; }
 
-            public Triangle(double side1, double side2, double side3)
+            public Triangle(double side1, double side2, double side3 = -1)
                 : base("Triangle")
             {
                 Side1 = side1;
                 Side2 = side2;
-                Side3 = side3;
+                Side3 = (side3 == -1) ? 
+                    Math.Sqrt(Math.Pow(side1, 2) + Math.Pow(side2, 2)) : // hypotenuse
+                    side3;
 
                 if (side1 == side2 && side2 == side3)
                 {
